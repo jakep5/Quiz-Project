@@ -1,0 +1,103 @@
+* {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-image: url("https://wallpaperplay.com/walls/full/8/8/3/244127.jpg");
+}
+.quiz {
+    height: 2000px;
+    width: 2000px;
+}
+div.homescreen {
+    background-color: white;
+    border: 1px black solid;
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -300px;
+    text-align: center;
+    background-color: rgb(36, 36, 36);
+    box-shadow: 10px 10px 5px black;
+}
+
+.questionDisplay {
+    background-color: white;
+    border: 1px black solid;
+    height: 400px;
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -300px;
+    background-color: rgb(36, 36, 36);
+    box-shadow: 10px 10px 5px black;
+}
+
+div.greeting{
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 150px;
+}
+
+div.feedback {
+    padding-top: 40px;
+}
+
+button {
+    color: black;
+    font-size: 16px;
+    padding: 18px 45px;
+}
+button.beginQuiz {
+    margin-top: 250px;
+}
+button.submitAnswer {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 430px;
+}
+
+button.nextQuestion {
+    position: absolute;
+    margin-top: 100px;
+    margin-right: 400px;
+}
+
+button.takeAgain {
+    position: absolute;
+    padding: 18px 45px;
+    margin-top: 150px;
+    margin-left: 300px;
+}
+
+h1.questionText {
+    margin-left: 25px;
+}
+
+.optionDisplay {
+    font-size: 24px;
+}
+
+label {
+    display: flex;
+    align-items: baseline;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+container {
+    height: 402px;
+    width: 602px;
+    text-align: center;
+    margin-top: 40px;
+}
