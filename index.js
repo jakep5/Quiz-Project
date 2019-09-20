@@ -14,7 +14,7 @@ const questions = [
         option2: 'Rumors by Fleetwood Mac',
         option3: 'Their Greatest Hits by The Eagles',
         option4: 'Back in Black by AC/DC',
-        answer: 'Their Greatest Hits by the Eagles',
+        answer: 'Their Greatest Hits by The Eagles',
     },
     {
         question: 'Which of these albums was the best selling of the 90s?',
@@ -130,7 +130,7 @@ function generateQuestion () {
                     <h1 class="questionText">${questionDisplayed}</h1>
                     <form class="options">
                         <fieldset>
-                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}">${optionOneCurrent}</label>
+                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}" required>${optionOneCurrent}</label>
                             <label for='optionTwo'><input type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}</label>
                             <label for='optionThree'><input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
                             <label for='optionFour'><input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
@@ -146,12 +146,11 @@ function generateQuestion () {
 
 
 function submitResponse() {
-    let questionCurrent = questions[currentQuestion];
     $('.quiz').on('click', '.submitAnswer', function() {
+        let questionCurrent = questions[currentQuestion];
         if ($('input[name="choice"]:checked').val() === questionCurrent.answer) {
             correctResponse();
             currentScore++;
-            return currentScore;
         }
         else {
             incorrectResponse();
@@ -163,6 +162,7 @@ function submitResponse() {
 function incorrectResponse() {
     let questionCurrent = questions[currentQuestion];
     let correctAnswer = questionCurrent.answer;
+    let score = currentScore
     $('main').html(`
         <div class="homescreen">
             <container>
@@ -179,13 +179,14 @@ function incorrectResponse() {
 `)};
 
 function correctResponse() {
+    let score = currentScore
     $('main').html(`
         <div class="homescreen">
             <container>
                 <div class="feedback">
                         <h1>Correct!</h1>
                         <h2>Great job!</h2>
-                        <h2>Your score: 2 out of 10</h2>
+                        <h2>Your score: ${score} out of 10</h2>
                 </div>
                 <div class="button">
                     <button class="nextQuestion" name="nextQuestion">Next question =></button>
