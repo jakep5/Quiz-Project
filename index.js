@@ -1,3 +1,4 @@
+//Question database
 const questions = [
     {
         question: 'Which of the following is the greatest selling artist of all time?',
@@ -81,7 +82,41 @@ const questions = [
     },
     ];
 
-    let currentQuestion = 0;
+let currentQuestion = 0;
+let currentScore = 0;
+
+
+//Event listeners
+$(document).on('click', 'button.beginQuiz', function() {
+    generateQuestion();
+});
+
+$(document).on('click', 'button.nextQuestion', function() {
+    if (currentQuestion < 9) {
+        currentQuestion++;
+        generateQuestion();
+    }
+    else {
+        generateResults();
+    }
+});
+
+$(document).on('click', 'button.takeAgain', function(){
+    currentQuestion = 0;
+    currentScore = 0;
+    generateQuestion();
+})
+
+function createLegend () {
+    $('body').append(`
+        <div class="quizInfo">
+            <p>Your score: ${currentScore} out of 10</p>
+            <p>Current question: ${currentQuestion} of 10</p>
+        </div>
+        `)
+};
+
+function generateQuestion () {
     let questionCurrent = questions[currentQuestion];
     let questionDisplayed = questionCurrent.question; 
     let optionOneCurrent = questionCurrent.option1;
@@ -89,42 +124,33 @@ const questions = [
     let optionThreeCurrent = questionCurrent.option3;
     let optionFourCurrent = questionCurrent.option4;
     let answerCurrent = questionCurrent.answer;
-    let currentScore = 0;
-
-$(document).on('click', 'button.nextQuestion', function() {
-    currentQuestion++;
-    generateQuestion();
-});
-
-
-
-function generateQuestion () {
-    $('button.beginQuiz').click (function() {
-        $('main').replaceWith(`
-            <div class="questionDisplay">
-                <div>
-                        <h1 class="questionText">${questionDisplayed}</h1>
-                        <form class="options">
-                            <input type="radio" name="choice" value="${optionOneCurrent}">${optionOneCurrent}
-                            <input type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}
-                            <input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}
-                            <input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}
-                        </form>
-                </div>
-                <div class="button">
-                    <button class="submitAnswer" name="submitAnswer">Submit</button>
-                </div>
+    $('main').html(`
+        <div class="questionDisplay">
+            <div>
+                    <h1 class="questionText">${questionDisplayed}</h1>
+                    <form class="options">
+                        <fieldset>
+                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}">${optionOneCurrent}</label>
+                            <label for='optionTwo'><input type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}</label>
+                            <label for='optionThree'><input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
+                            <label for='optionFour'><input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
+                        </fieldset>
+                    </form>
             </div>
-        `);
-    });
+            <div class="button">
+                <button class="submitAnswer" name="submitAnswer">Submit</button>
+            </div>
+        </div>
+    `);
 };
 
 
 function submitResponse() {
+    let questionCurrent = questions[currentQuestion];
     $('.quiz').on('click', '.submitAnswer', function() {
         if ($('input[name="choice"]:checked').val() === questionCurrent.answer) {
             correctResponse();
-            currentScore + 1;
+            currentScore++;
             return currentScore;
         }
         else {
@@ -132,9 +158,12 @@ function submitResponse() {
         };
 })};
 
+
+
 function incorrectResponse() {
+    let questionCurrent = questions[currentQuestion];
     let correctAnswer = questionCurrent.answer;
-    $('div.questionDisplay').replaceWith(`
+    $('main').html(`
         <div class="homescreen">
             <container>
                 <div class="feedback">
@@ -150,7 +179,7 @@ function incorrectResponse() {
 `)};
 
 function correctResponse() {
-    $('div.questionDisplay').replaceWith(`
+    $('main').html(`
         <div class="homescreen">
             <container>
                 <div class="feedback">
@@ -166,12 +195,23 @@ function correctResponse() {
     `)
 };
 
-
+function generateResults () {
+    $('main').html(`
+        <div class="homescreen">
+            <div class="results">
+                    <h1>You have completed the quiz!</h1>
+                    <h2>Your score: ${currentScore} out of 10!</h2>
+            </div>
+            <div class="button">
+                <button class="takeAgain" name="takeAgain">Take quiz again =></button>
+            </div>
+        </div>
+`)};
 
 
 function initializePage() {
-    generateQuestion();
     submitResponse();
+    createLegend();
 };
 
 

@@ -37,6 +37,7 @@ div.homescreen {
     margin-left: -300px;
     background-color: rgb(36, 36, 36);
     box-shadow: 10px 10px 5px black;
+    border-radius: 5px;
 }
 
 div.greeting{
@@ -49,31 +50,59 @@ div.feedback {
     padding-top: 40px;
 }
 
+div.quizInfo {
+    position: fixed;
+    height: 95px;
+    width: 250px;
+    background-color: rgb(36, 36, 36);
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 7px 7px 4px black;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.fieldset{ 
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
 button {
     color: black;
     font-size: 16px;
     padding: 18px 45px;
+    border-radius: 3px;
+    transition: 0.2s;
+    border-color: rgb(36, 36, 36);
 }
+
+button:hover {
+    background-color: grey;
+    color: white;
+}
+
 button.beginQuiz {
     margin-top: 250px;
 }
 button.submitAnswer {
     position: absolute;
-    margin-top: 150px;
+    margin-top: 20px;
     margin-left: 430px;
 }
 
-button.nextQuestion {
-    position: absolute;
-    margin-top: 100px;
-    margin-right: 400px;
-}
 
-button.takeAgain {
-    position: absolute;
-    padding: 18px 45px;
-    margin-top: 150px;
-    margin-left: 300px;
+button.takeAgain, button.nextQuestion {
+    margin:0 auto;
+    margin-right: 180px;
+    margin-top: 68px;
+    display:block;
 }
 
 h1.questionText {
