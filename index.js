@@ -89,6 +89,16 @@ let currentScore = 0;
 //Event listeners
 
 $(document).keypress(function(e){
+    if(e.keyCode==13 && ('div.homescreen' != null)) {
+        $('button.beginQuiz').click();
+}});
+
+$(document).keypress(function(e){
+    if(e.keyCode==13 && ('div.feedback' != null)) {
+        $('button.nextQuestion').click();
+}});
+
+$(document).keypress(function(e){
     e.preventDefault();
     if(e.keyCode==13 && ('div.questionDisplay' != null)) {
         $('button.submitAnswer').click();
