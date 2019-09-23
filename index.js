@@ -89,19 +89,13 @@ let currentScore = 0;
 //Event listeners
 
 $(document).keypress(function(e){
-    if(e.keyCode==13 && ('div.homescreen' != null)) {
+    if(e.keyCode==13) {
         $('button.beginQuiz').click();
 }});
 
 $(document).keypress(function(e){
-    if(e.keyCode==13 && ('div.feedback' != null)) {
+    if(e.keyCode==13) {
         $('button.nextQuestion').click();
-}});
-
-$(document).keypress(function(e){
-    e.preventDefault();
-    if(e.keyCode==13 && ('div.questionDisplay' != null)) {
-        $('button.submitAnswer').click();
 }});
 
 $(document).on('click', 'button.beginQuiz', function() {
@@ -162,10 +156,10 @@ function generateQuestion () {
                             <label for='optionThree'><input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
                             <label for='optionFour'><input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
                         </fieldset>
+                        <div class="button">
+                            <button class="submitAnswer" name="submitAnswer">Submit</button>
+                        </div>
                     </form>
-            </div>
-            <div class="button">
-                <button class="submitAnswer" name="submitAnswer">Submit</button>
             </div>
         </div>
     `);
