@@ -87,16 +87,26 @@ let currentScore = 0;
 
 
 //Event listeners
+
+$(document).keypress(function(e){
+    e.preventDefault();
+    if(e.keyCode==13 && ('div.questionDisplay' != null)) {
+        $('button.submitAnswer').click();
+}});
+
 $(document).on('click', 'button.beginQuiz', function() {
     generateQuestion();
+    createLegend();
 });
 
 $(document).on('click', 'button.nextQuestion', function() {
     if (currentQuestion < 9) {
         currentQuestion++;
         generateQuestion();
+        refreshLegend();
     }
     else {
+        currentQuestion++;
         generateResults();
     }
 });
@@ -105,14 +115,22 @@ $(document).on('click', 'button.takeAgain', function(){
     currentQuestion = 0;
     currentScore = 0;
     generateQuestion();
+    refreshLegend ();
 })
 
 function createLegend () {
     $('body').append(`
         <div class="quizInfo">
             <p>Your score: ${currentScore} out of 10</p>
-            <p>Current question: ${currentQuestion} of 10</p>
+            <p>Current question: ${currentQuestion + 1} of 10</p>
         </div>
+        `)
+};
+
+function refreshLegend () {
+    $('.quizInfo').html(`
+            <p>Your score: ${currentScore} out of 10</p>
+            <p>Current question: ${currentQuestion + 1} of 10</p>
         `)
 };
 
@@ -123,14 +141,13 @@ function generateQuestion () {
     let optionTwoCurrent = questionCurrent.option2;
     let optionThreeCurrent = questionCurrent.option3;
     let optionFourCurrent = questionCurrent.option4;
-    let answerCurrent = questionCurrent.answer;
     $('main').html(`
         <div class="questionDisplay">
             <div>
                     <h1 class="questionText">${questionDisplayed}</h1>
                     <form class="options">
                         <fieldset>
-                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}" required>${optionOneCurrent}</label>
+                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}" required value="1">${optionOneCurrent}</label>
                             <label for='optionTwo'><input type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}</label>
                             <label for='optionThree'><input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
                             <label for='optionFour'><input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
@@ -148,13 +165,17 @@ function generateQuestion () {
 function submitResponse() {
     $('.quiz').on('click', '.submitAnswer', function() {
         let questionCurrent = questions[currentQuestion];
-        if ($('input[name="choice"]:checked').val() === questionCurrent.answer) {
-            correctResponse();
-            currentScore++;
+        if ($("form.options input:radio:checked").length > 0) {
+            if ($('input[name="choice"]:checked').val() === questionCurrent.answer) {
+                currentScore++;
+                correctResponse();
+            }
+            else {
+                incorrectResponse();
+            };
+        } else {
+            alert("You must pick an option");
         }
-        else {
-            incorrectResponse();
-        };
 })};
 
 
@@ -169,7 +190,7 @@ function incorrectResponse() {
                 <div class="feedback">
                         <h1>Incorrect!</h1>
                         <h2>The correct answer was: ${correctAnswer}</h2>
-                        <h2>Your score: ${currentScore} out of 10</h2>
+                        <h2>Your score: ${score} out of 10</h2>
                 </div>
                 <div class="button">
                     <button class="nextQuestion" name="nextQuestion">Next question =></button>
@@ -212,7 +233,6 @@ function generateResults () {
 
 function initializePage() {
     submitResponse();
-    createLegend();
 };
 
 
