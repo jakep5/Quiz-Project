@@ -7,9 +7,10 @@ body {
     background-image: url("https://wallpaperplay.com/walls/full/8/8/3/244127.jpg");
 }
 .quiz {
-    height: 2000px;
-    width: 2000px;
+    height: 600px;
+    width: 600px;
 }
+
 div.homescreen {
     background-color: white;
     border: 1px black solid;
