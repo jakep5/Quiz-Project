@@ -148,13 +148,13 @@ function generateQuestion () {
     $('main').html(`
         <div class="questionDisplay">
             <div>
-                    <h1 class="questionText">${questionDisplayed}</h1>
                     <form class="options">
                         <fieldset>
-                            <label for='optionOne'><input type="radio" name="choice" value="${optionOneCurrent}" required value="1">${optionOneCurrent}</label>
-                            <label for='optionTwo'><input type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}</label>
-                            <label for='optionThree'><input type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
-                            <label for='optionFour'><input type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
+                            <legend>${questionDisplayed}</legend>
+                            <label for='optionOne'><input id="optionOne" type="radio" name="choice" value="${optionOneCurrent}" required value="1">${optionOneCurrent}</label>
+                            <label for='optionTwo'><input id="optionTwo" type="radio" name="choice" value="${optionTwoCurrent}">${optionTwoCurrent}</label>
+                            <label for='optionThree'><input id="optionThree" type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
+                            <label for='optionFour'><input id="optionFour" type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
                         </fieldset>
                         <div class="button">
                             <button class="submitAnswer" name="submitAnswer">Submit</button>

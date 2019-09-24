@@ -87,6 +87,7 @@ body {
         border-radius: 3px;
         transition: 0.2s;
         border-color: rgb(36, 36, 36);
+        cursor: pointer;
     }
 
     button:hover {
@@ -111,10 +112,11 @@ body {
         display:block;
     }
 
-    h1.questionText {
-        margin-left: 25px;
+    legend {
+        padding-top: 25px;
         margin-right: 25px;
         font-size: 24px;
+        margin-bottom: 15px;
     }
 
     .optionDisplay {
@@ -126,10 +128,12 @@ body {
         align-items: baseline;
         font-size: 20px;
         padding-left: 5px;
+        cursor:pointer;
     }
 
     input[type="radio"] {
         margin-right: 8px;
+        cursor: pointer;
     }
 
     fieldset {
@@ -149,8 +153,8 @@ body {
 @media screen and (max-width: 800px) {
 
     .quiz {
-        height: 600px;
-        width: 600px;
+        height: 303px;
+        width: 453px;
     }
 
     div.homescreen {
@@ -173,7 +177,7 @@ body {
         border: 1px black solid;
         height: 300px;
         width: 450px;
-        position: absolute;
+        /* position: absolute; */
         /* top: 50%;
         left: 50%; */
         background-color: rgb(36, 36, 36);
@@ -181,14 +185,10 @@ body {
         border-radius: 5px;
     }
 
-    div.greeting{
-        position: absolute;
-        margin-top: 60px;
-        margin-left: 150px;
-    }
 
     div.feedback {
         padding-top: 40px;
+        font-size: 18px;
     }
 
     div.quizInfo {
@@ -212,16 +212,18 @@ body {
         display: block;
         padding-top: 10px;
         padding-bottom: 10px;
+        cursor:pointer;
     }
 
 
     button {
         color: black;
         font-size: 12px;
-        padding: 18px 45px;
+        padding: 12px 36px;
         border-radius: 3px;
         transition: 0.2s;
         border-color: rgb(36, 36, 36);
+        cursor: pointer;
     }
 
     button:hover {
@@ -230,30 +232,38 @@ body {
     }
 
     button.beginQuiz {
-        margin-top: 200px;
+        margin-top: 40px;
     }
     button.submitAnswer {
         position: absolute;
-        margin-top: 0px;
-        margin-left: 430px;
+        margin-top: -20px;
+        margin-left: 325px;
     }
 
 
     button.takeAgain, button.nextQuestion {
-        margin:0 auto;
-        margin-right: 180px;
-        margin-top: 68px;
+        margin: 50px auto;
         display:block;
+
     }
 
-    h1.questionText {
-        margin-left: 25px;
+    legend {
+        font-size: 20px;
+        padding-top: 15px;
         margin-right: 25px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
         font-size: 18px;
     }
+    
 
     h1.quizTitle {
-        font-size: 20px;
+        margin-top: 75px;
     }
 
     .optionDisplay {
@@ -269,6 +279,7 @@ body {
 
     input[type="radio"] {
         margin-right: 8px;
+        cursor: pointer;
     }
 
     fieldset {
