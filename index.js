@@ -1,4 +1,4 @@
-//Question database
+//QUESTION DATABASE
 const questions = [
     {
         question: 'Which of the following is the greatest selling artist of all time?',
@@ -86,45 +86,53 @@ let currentQuestion = 0;
 let currentScore = 0;
 
 
-//Event listeners
+//EVENT LISTENERS
 
-$(document).keypress(function(e){
-    if(e.keyCode==13) {
-        $('button.beginQuiz').click();
-}});
+function enterToBeginQuiz () {
+    $(document).keypress(function(e){
+        if(e.keyCode==13) {
+            $('button.beginQuiz').click();
+}})};
 
-$(document).keypress(function(e){
-    if(e.keyCode==13) {
-        $('button.nextQuestion').click();
-}});
+function enterForNextQuestion () {
+    $(document).keypress(function(e){
+        if(e.keyCode==13) {
+            $('button.nextQuestion').click();
+}})};
 
-$(document).on('click', 'button.beginQuiz', function() {
-    generateQuestion();
-    createLegend();
-});
-
-$(document).on('click', 'button.nextQuestion', function() {
-    if (currentQuestion < 9) {
-        currentQuestion++;
+function beginQuiz () {
+    $("div.quiz").on('click', 'button.beginQuiz', function() {
         generateQuestion();
-        refreshLegend();
-    }
-    else {
-        currentQuestion++;
-        generateResults();
-    }
-});
+        createLegend();
+})};
 
-$(document).on('click', 'button.takeAgain', function(){
-    currentQuestion = 0;
-    currentScore = 0;
-    generateQuestion();
-    refreshLegend ();
-})
+function generateNextQuestion () {
+    $("div.quiz").on('click', 'button.nextQuestion', function() {
+        if (currentQuestion < 9) {
+            currentQuestion++;
+            generateQuestion();
+            refreshLegend();
+        }
+        else {
+            currentQuestion++;
+            generateResults();
+        }
+})};
+
+function takeQuizAgain () {  
+    $("div.quiz").on('click', 'button.takeAgain', function() {
+        currentQuestion = 0;
+        currentScore = 0;
+        generateQuestion();
+        refreshLegend ();
+})};
+
+//
+
 
 function createLegend () {
     $('body').append(`
-        <div class="quizInfo">
+        <div class="quizInfo" role="displayScoreAndQuestion">
             <p>Your score: ${currentScore} out of 10</p>
             <p>Current question: ${currentQuestion + 1} of 10</p>
         </div>
@@ -146,7 +154,7 @@ function generateQuestion () {
     let optionThreeCurrent = questionCurrent.option3;
     let optionFourCurrent = questionCurrent.option4;
     $('main').html(`
-        <div class="questionDisplay">
+        <div class="questionDisplay" role="displayQuestion">
             <div>
                     <form class="options">
                         <fieldset>
@@ -156,7 +164,7 @@ function generateQuestion () {
                             <label for='optionThree'><input id="optionThree" type="radio" name="choice" value="${optionThreeCurrent}">${optionThreeCurrent}</label>
                             <label for='optionFour'><input id="optionFour" type="radio" name="choice" value="${optionFourCurrent}">${optionFourCurrent}</label>
                         </fieldset>
-                        <div class="button">
+                        <div class="button" role="holdButton">
                             <button class="submitAnswer" name="submitAnswer">Submit</button>
                         </div>
                     </form>
@@ -191,12 +199,12 @@ function incorrectResponse() {
     $('main').html(`
         <div class="homescreen">
             <container>
-                <div class="feedback">
+                <div class="feedback" role="displayFeedback">
                         <h1>Incorrect!</h1>
                         <h2>The correct answer was: ${correctAnswer}</h2>
                         <h2>Your score: ${score} out of 10</h2>
                 </div>
-                <div class="button">
+                <div class="button" role="holdButton">
                     <button class="nextQuestion" name="nextQuestion">Next question =></button>
                 </div>
             </container>
@@ -208,12 +216,12 @@ function correctResponse() {
     $('main').html(`
         <div class="homescreen">
             <container>
-                <div class="feedback">
+                <div class="feedback" role="displayFeedback">
                         <h1>Correct!</h1>
                         <h2>Great job!</h2>
                         <h2>Your score: ${score} out of 10</h2>
                 </div>
-                <div class="button">
+                <div class="button" role="holdButton">
                     <button class="nextQuestion" name="nextQuestion">Next question =></button>
                 </div>
             </container>
@@ -223,21 +231,27 @@ function correctResponse() {
 
 function generateResults () {
     $('main').html(`
-        <div class="homescreen">
-            <div class="results">
+        <div class="homescreen" role="textHolder">
+            <div class="results" role="displayResults">
                     <h1>You have completed the quiz!</h1>
                     <h2>Your score: ${currentScore} out of 10!</h2>
             </div>
-            <div class="button">
+            <div class="button" role="holdButton">
                 <button class="takeAgain" name="takeAgain">Take quiz again =></button>
             </div>
         </div>
 `)};
 
 
+//INITIALIZE FUNCTION
 function initializePage() {
+    beginQuiz();
+    generateNextQuestion();
+    takeQuizAgain();
+    enterToBeginQuiz();
+    enterForNextQuestion();
     submitResponse();
 };
 
-
+//CALL INITIALIZE FUNCTION
 $(initializePage());

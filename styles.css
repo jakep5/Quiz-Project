@@ -5,6 +5,7 @@
 
 body {
     background-image: url("https://wallpaperplay.com/walls/full/8/8/3/244127.jpg");
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
