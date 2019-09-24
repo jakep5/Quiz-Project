@@ -67,6 +67,7 @@ body {
         box-shadow: 7px 7px 4px black;
         border-radius: 4px;
         text-align: center;
+        opacity: 0.7;
     }
 
     .fieldset{ 
@@ -154,19 +155,18 @@ body {
 @media screen and (max-width: 800px) {
 
     .quiz {
+        margin: 10px auto;
         height: 303px;
         width: 453px;
+        display: flex;
     }
 
     div.homescreen {
-        margin: 75px auto;
+        margin: 10px auto;
         background-color: white;
         border: 1px black solid;
         height: 300px;
         width: 450px;
-        /* position: absolute;
-        top: 50%;
-        left: 50%; */
         text-align: center;
         background-color: rgb(36, 36, 36);
         box-shadow: 10px 10px 5px black;
@@ -188,20 +188,22 @@ body {
 
 
     div.feedback {
+        margin: 10px auto;
         padding-top: 40px;
         font-size: 18px;
     }
 
     div.quizInfo {
         position: fixed;
-        height: 95px;
-        width: 250px;
+        height: 70px;
+        width: 200px;
         background-color: rgb(36, 36, 36);
         bottom: 10px;
         right: 10px;
         box-shadow: 7px 7px 4px black;
         border-radius: 4px;
         text-align: center;
+        opacity: 0.7;
     }
 
     .fieldset{ 
@@ -215,7 +217,6 @@ body {
         padding-bottom: 10px;
         cursor:pointer;
     }
-
 
     button {
         color: black;
@@ -241,7 +242,6 @@ body {
         margin-left: 325px;
     }
 
-
     button.takeAgain, button.nextQuestion {
         margin: 50px auto;
         display:block;
@@ -262,6 +262,9 @@ body {
         font-size: 18px;
     }
     
+    p {
+        font-size: 14px;
+    }
 
     h1.quizTitle {
         margin-top: 75px;
