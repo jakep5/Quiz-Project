@@ -154,6 +154,11 @@ body {
 
 @media screen and (max-width: 800px) {
 
+    body {
+        background-attachment: scroll;
+        background-position: center center;
+    }
+
     .quiz {
         margin: 10px auto;
         height: 303px;
@@ -178,9 +183,6 @@ body {
         border: 1px black solid;
         height: 300px;
         width: 450px;
-        /* position: absolute; */
-        /* top: 50%;
-        left: 50%; */
         background-color: rgb(36, 36, 36);
         box-shadow: 10px 10px 5px black;
         border-radius: 5px;
