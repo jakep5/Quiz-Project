@@ -26,10 +26,10 @@ const questions = [
     },
     {
         question: 'Which of the following albums is the best selling so far in the 21st Century?',
-        option1: '1 by The Beatles',
+        option1: 'The Marshall Mathers LP by Eminem',
         option2: 'Come Away With Me by Norah Jones',
         option3: '21 by Adele',
-        option4: 'The Marshall Mathers LP by Eminem',
+        option4: '1 by The Beatles',
         answer: 'The Marshall Mathers LP by Eminem'
     },
     {
@@ -49,7 +49,7 @@ const questions = [
         answer: 'Guns N Roses',
     },
     {
-        question: 'Which of the following bands does NOT have a lead singer that also plays the bass?',
+        question: 'Which band does NOT have a lead singer that also plays the bass?',
         option1: 'Rush',
         option2: 'Kiss',
         option3: 'Led Zeppelin',
