@@ -318,7 +318,7 @@
     .quiz {
         margin: 10px auto;
         height: 303px;
-        width: 453px;
+        width: 353px;
         display: flex;
     }
 
@@ -384,6 +384,7 @@
         transition: 0.2s;
         border-color: rgb(36, 36, 36);
         cursor: pointer;
+        -webkit-appearance: none;
     }
 
     button:hover {
