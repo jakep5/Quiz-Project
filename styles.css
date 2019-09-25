@@ -391,25 +391,30 @@
     button:hover {
         background-color: grey;
         color: white;
+        -webkit-appearance: none;
     }
 
     button.beginQuiz {
         margin-top: 35px;
+        -webkit-appearance: none;
     }
     button.submitAnswer {
         position: absolute;
         margin-top: -45px;
         margin-left: 220px;
+        -webkit-appearance: none;
     }
 
     button.takeAgain {
         margin: 65px auto;
         display:block;
+        -webkit-appearance: none;
     }
 
     button.nextQuestion {
         margin: 25px auto;
         display:block;
+        -webkit-appearance: none;
     }
 
     legend {
